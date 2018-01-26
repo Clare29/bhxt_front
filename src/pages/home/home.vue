@@ -20,16 +20,16 @@
             <img src="./more@2x.png" class="fr">
           </div>
           <div class="fl daili">
-            <img src="./daili@2x.png" class="fr">
-            <span>我的客户</span>
+            <img src="./daili@2x.png">
+            <span>意向代理</span>
           </div>
           <div class="fl chongzhi">
-            <img src="./chongzhi@2x.png" class="fr">
-            <span>个人中心</span>
+            <img src="./chongzhi@2x.png">
+            <span>审核充值</span>
           </div>
         </div>
         <div class="blank"></div>
-        <div class="smallIcons">
+        <div class="container">
           <div v-for="item in items1" class="fl item" @click="$router.push(item.to);">
             <img v-bind:src="item.src"><br>
             <span>{{item.text}}</span>
@@ -255,10 +255,13 @@
     }
     .middle{
       height: 2.4rem;
-      .money{
-        width: 100%;
+      div{
         height: 50%;
         background: $color-highlight-background;
+
+      }
+      .money{
+        width: 100%;
         padding:0.44rem 0.3rem 0.44rem 0.6rem;
         border-bottom:1px solid $color-border;
         span:first-child{
@@ -276,6 +279,27 @@
           background-size: 0.16rem;
         }
       }
+      .chongzhi,.daili{
+        width: 50%;
+        padding:0.36rem 0.7rem;
+        border-right:1px solid $color-border;
+        position: relative;
+        img{
+          width: 0.4rem;
+          margin-right: 0.48rem;
+        }
+        span{
+          /*height: 100%;*/
+          position: absolute;
+          top: 0.5rem;
+          font-size:0.32rem;
+        }
+      }
+    }
+    .blank{
+      width: 100%;
+      height: 0.2rem;
+      background: $color-blank;
     }
   }
 </style>
