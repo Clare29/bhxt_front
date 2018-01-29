@@ -1,5 +1,6 @@
 <template>
     <div class="full-screen-wrapper home-wrapper">
+      <scroll ref="scroll" :pullUpLoad="pullUpLoad">
         <div class="bg">
           <div class="bg-up">
             <div class="circle fl"></div>
@@ -29,100 +30,195 @@
           </div>
         </div>
         <div class="blank"></div>
-        <div class="container">
-          <div v-for="item in items1" class="fl item" @click="$router.push(item.to);">
-            <img v-bind:src="item.src"><br>
-            <span>{{item.text}}</span>
+        <div class="block">
+          <div class="title">
+            <span>代理管理</span>
           </div>
-          <div v-for="item in items2" class="fl item" @click="$router.push(item.to);">
-            <img v-bind:src="item.src"><br>
-            <span>{{item.text}}</span>
-          </div>
-          <div v-for="item in items3" class="fl item" @click="$router.push(item.to);">
+          <div v-for="item in dailiManage" class="item" @click="$router.push(item.to);">
             <img v-bind:src="item.src"><br>
             <span>{{item.text}}</span>
           </div>
         </div>
+        <div class="blank"></div>
+        <div class="block">
+          <div class="title">
+            <span>财务管理</span>
+          </div>
+          <div v-for="item in caiwuManage" class="item" @click="$router.push(item.to);">
+            <img v-bind:src="item.src"><br>
+            <span>{{item.text}}</span>
+          </div>
+        </div>
+        <div class="blank"></div>
+        <div class="block">
+          <div class="title">
+            <span>订单管理</span>
+          </div>
+          <div v-for="item in dingdanManage" class="item" @click="$router.push(item.to);">
+            <img v-bind:src="item.src"><br>
+            <span>{{item.text}}</span>
+          </div>
+        </div>
+        <div class="blank"></div>
+        <div class="block">
+          <div class="title">
+            <span>售后管理</span>
+          </div>
+          <div v-for="item in shouhouManage" class="item" @click="$router.push(item.to);">
+            <img v-bind:src="item.src"><br>
+            <span>{{item.text}}</span>
+          </div>
+        </div>
+        <div class="blank"></div>
+        <div class="block">
+          <div class="title">
+            <span>出货统计</span>
+          </div>
+          <div v-for="item in chuhuoCalculate" class="item" @click="$router.push(item.to);">
+            <img v-bind:src="item.src"><br>
+            <span>{{item.text}}</span>
+          </div>
+        </div>
+        <div class="blank"></div>
+        <div class="block">
+          <div class="title">
+            <span>产品查询</span>
+          </div>
+          <div v-for="item in chanpinchaxun" class="item" @click="$router.push(item.to);">
+            <img v-bind:src="item.src"><br>
+            <span>{{item.text}}</span>
+          </div>
+        </div>
+      </scroll>
       <router-view></router-view>
     </div>
 </template>
 <script>
-  import slider from 'base/slider/slider';
-  import {formatImg, setTitle} from 'common/js/util';
+  import {setTitle} from 'common/js/util';
   import Scroll from 'base/scroll/scroll';
-  import {getBannerList} from 'api/general';
   export default {
     data() {
       return {
-        banners: [],
-//        items1: [
-// {
-//          text: '资信模板',
-//          src: require('./资信报告@2x.png'),
-//          to: '/my-templet'
-//        }, {
-//          text: '资信跟踪',
-//          src: require('./信息跟踪@2x.png'),
-//          to: '/home/contact-business'
-//
-//        }, {
-//          text: '资信联动',
-//          src: require('./资信联动@2x.png'),
-//          to: '/home/contact-business'
-//        }],
-//        items2: [{
-//          text: '资金代收',
-//          src: require('./资金代收@2x.png'),
-//          to: '/home/contact-business'
-//        }, {
-//          text: '资金代付',
-//          src: require('./资金代付@2x.png'),
-//          to: '/home/contact-business'
-//        }, {
-//          text: '资金账本',
-//          src: require('./资金账本@2x.png'),
-//          to: '/home/contact-business'
-//        }],
-//        items3: [{
-//          text: '我的申请',
-//          src: require('./合同@2x.png'),
-//          to: '/home/my-apply'
-//        }, {
-//          text: '转赠处理',
-//          src: require('./存管@2x.png'),
-//          to: '/home/orders'
-//        }, {
-//          text: 'APP下载',
-//          src: require('./more@2x.png'),
-//          to: '/home/qrcode'
-//        }
-// ],
-        pullUpLoad: null
+        dailiManage: [{
+          text: '代理商结构图',
+          src: require('./daili2@2x.png'),
+          to: '/my-templet'
+        }, {
+          text: '意向代理',
+          src: require('./constructor@2x.png'),
+          to: '/home/contact-business'
+
+        }, {
+          text: '我的推荐',
+          src: require('./tuijian@2x.png'),
+          to: '/home/contact-business'
+        }, {
+          text: '代理轨迹',
+          src: require('./guiji@2x.png'),
+          to: '/home/contact-business'
+        }, {
+          text: '授权证书',
+          src: require('./certification2@2x.png'),
+          to: '/home/contact-business'
+        }, {
+          text: '代理审核',
+          src: require('./shenhe@2x.png'),
+          to: '/home/contact-business'
+        }, {
+          text: '申请取消',
+          src: require('./cancel@2x.png'),
+          to: '/home/contact-business'
+        }, {
+          text: '下级代理',
+          src: require('./xiajidaili@2x.png'),
+          to: '/home/contact-business'
+        }, {
+          text: '邀请链接',
+          src: require('./yaoqinglianjie@2x.png'),
+          to: '/home/contact-business'
+        }],
+        caiwuManage: [{
+          text: '我的余额',
+          src: require('./wodeyue@2x.png'),
+          to: '/my-templet'
+        }, {
+          text: '申请充值',
+          src: require('./shenqingchongzhi@2x.png'),
+          to: '/home/contact-business'
+
+        }, {
+          text: '审核充值',
+          src: require('./shenhechongzhi2@2x.png'),
+          to: '/home/contact-business'
+        }, {
+          text: '推荐奖励',
+          src: require('./tuijianjiangli@2x.png'),
+          to: '/home/contact-business'
+        }, {
+          text: '出货奖励',
+          src: require('./chuhuojiangli@2x.png'),
+          to: '/home/contact-business'
+        }, {
+          text: '介绍奖励',
+          src: require('./jieshaojiangli@2x.png'),
+          to: '/home/contact-business'
+        }],
+        dingdanManage: [{
+          text: '我的订单',
+          src: require('./myOrder@2x.png'),
+          to: '/my-templet'
+        }, {
+          text: '在线下单',
+          src: require('./zaixianxiadan@2x.png'),
+          to: '/home/contact-business'
+        }, {
+          text: '待处理订单',
+          src: require('./daichulidingdan@2x.png'),
+          to: '/home/contact-business'
+        }],
+        shouhouManage: [{
+          text: '申请换货',
+          src: require('./shenqinghuanhuo@2x.png'),
+          to: '/my-templet'
+        }, {
+          text: '售后记录',
+          src: require('./shouhoujilu@2x.png'),
+          to: '/home/contact-business'
+        }],
+        chuhuoCalculate: [{
+          text: '我的介绍',
+          src: require('./wodejieshao@2x.png'),
+          to: '/my-templet'
+        }, {
+          text: '个人业绩',
+          src: require('./gerenyeji@2x.png'),
+          to: '/home/contact-business'
+        }, {
+          text: '差价利润',
+          src: require('./chajialirun@2x.png'),
+          to: '/home/contact-business'
+        }],
+        chanpinchaxun: [{
+          text: '产品查询',
+          src: require('./chanpinchaxun@2x.png'),
+          to: '/my-templet'
+        }, {
+          text: '素材查询',
+          src: require('./sucaichaxun@2x.png'),
+          to: '/home/contact-business'
+        }]
       };
-    },
-    mounted: function () {
-      this.$nextTick(function () {
-        setTimeout(() => {
-          this.$refs.scroll.refresh();
-        }, 20);
-      });
     },
     created() {
       this.first = true;
+      this.pullUpLoad = null;
       setTitle('首页');
       this.getInitData();
     },
     updated() {
       this.getInitData();
     },
-    computed: {
-      showDots() {
-        return this.banners.length > 1;
-      },
-      loop() {
-        return this.banners.length > 1;
-      }
-    },
+    computed: {},
     methods: {
       shouldGetData() {
         if (this.$route.path === '/home') {
@@ -133,31 +229,13 @@
       },
       getInitData() {
         if (this.shouldGetData()) {
-          this.first = false;
-          this.loadingFlag = true;
-          this.getBanners().then(() => {
-            this.loadingFlag = false;
-            setTimeout(() => {
-              this.$refs.scroll.refresh();
-            }, 20);
-          }).catch(() => {
-            this.loadingFlag = false;
-          });
+          setTimeout(() => {
+            this.$refs.scroll.refresh();
+          }, 40);
         }
-      },
-      getImgSyl(imgs) {
-        return {
-          backgroundImage: `url('${formatImg(imgs)}')`
-        };
-      },
-      getBanners() {
-        return getBannerList('index_banner').then((data) => {
-          this.banners = data;
-        });
       }
     },
     components: {
-      slider,
       Scroll
     }
   };
@@ -291,15 +369,52 @@
         span{
           /*height: 100%;*/
           position: absolute;
-          top: 0.5rem;
+          top: 0.46rem;
           font-size:0.32rem;
         }
+      }
+      .daili img{
+        width: 0.36rem;
       }
     }
     .blank{
       width: 100%;
       height: 0.2rem;
       background: $color-blank;
+    }
+    .block{
+      background: $color-background;
+      .title{
+        width: 100%;
+        height: 0.7rem;
+        padding: 0.2rem 0.3rem;
+        border-bottom: 1px solid $color-border;
+        span{
+          padding-left: 0.18rem;
+          color: $color-text;
+          border-left:8px solid $primary-color;
+          font-size: 0.3rem;
+        }
+      }
+      .item {
+        width: 33.3%;
+        height: 1.9rem;
+        padding-top: 0.48rem;
+        text-align: center;
+        border-bottom:1px solid $color-border;
+        border-right:1px solid $color-border;
+        display: inline-block;
+        img {
+          margin-bottom: 0.24rem;
+          width: 0.46rem;
+          height: 0.46rem;
+        }
+        span {
+          font-size: $font-size-medium;
+          color: #666;
+          margin: 0 auto;
+        }
+      }
     }
   }
 </style>

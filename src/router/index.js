@@ -5,7 +5,8 @@ Vue.use(Router);
 
 // 首页
 const Home = () => import('pages/home/home');
-
+// 登录
+const Login = () => import('pages/login/login');
 export default new Router({
   mode: 'history',
   routes: [
@@ -16,6 +17,9 @@ export default new Router({
       path: '/home',
       component: Home,
       children: []
+    }, {
+      path: '/login',
+      component: Login
     }
   ]
 });
