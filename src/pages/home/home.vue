@@ -2,13 +2,13 @@
     <div class="full-screen-wrapper home-wrapper">
       <scroll ref="scroll" :pullUpLoad="pullUpLoad">
         <div class="bg">
-          <div class="bg-up">
+          <router-link tag="div" to="/setting" class="bg-up">
             <div class="circle fl"></div>
             <img src="./head@2x.png" alt="头像" class="fl">
             <div class="name">张三</div>
             <div class="high">上级:公司</div>
             <p class="team fl">团队:family</p>
-          </div>
+          </router-link>
           <div class="bg-down">
           </div>
           <div class="bg-down-item"><div class="icon1 icon-certificate fl"></div><span>授权证书</span></div>
@@ -30,6 +30,7 @@
           </div>
         </div>
         <div class="blank"></div>
+        <!--代理管理-->
         <div class="block">
           <div class="title">
             <span>代理管理</span>
@@ -40,6 +41,7 @@
           </div>
         </div>
         <div class="blank"></div>
+        <!--财务管理-->
         <div class="block">
           <div class="title">
             <span>财务管理</span>
@@ -50,6 +52,7 @@
           </div>
         </div>
         <div class="blank"></div>
+        <!--订单管理-->
         <div class="block">
           <div class="title">
             <span>订单管理</span>
@@ -60,6 +63,7 @@
           </div>
         </div>
         <div class="blank"></div>
+        <!--售后管理-->
         <div class="block">
           <div class="title">
             <span>售后管理</span>
@@ -70,6 +74,7 @@
           </div>
         </div>
         <div class="blank"></div>
+        <!--出货统计-->
         <div class="block">
           <div class="title">
             <span>出货统计</span>
@@ -80,6 +85,7 @@
           </div>
         </div>
         <div class="blank"></div>
+        <!--产品查询-->
         <div class="block">
           <div class="title">
             <span>产品查询</span>
@@ -99,6 +105,7 @@
   export default {
     data() {
       return {
+//        代理管理
         dailiManage: [{
           text: '代理商结构图',
           src: require('./daili2@2x.png'),
@@ -106,7 +113,7 @@
         }, {
           text: '意向代理',
           src: require('./constructor@2x.png'),
-          to: '/home/contact-business'
+          to: '/yixiangdaili'
 
         }, {
           text: '我的推荐',
@@ -137,6 +144,7 @@
           src: require('./yaoqinglianjie@2x.png'),
           to: '/home/contact-business'
         }],
+//        财务管理
         caiwuManage: [{
           text: '我的余额',
           src: require('./wodeyue@2x.png'),
@@ -163,6 +171,7 @@
           src: require('./jieshaojiangli@2x.png'),
           to: '/home/contact-business'
         }],
+//        订单管理
         dingdanManage: [{
           text: '我的订单',
           src: require('./myOrder@2x.png'),
@@ -176,6 +185,7 @@
           src: require('./daichulidingdan@2x.png'),
           to: '/home/contact-business'
         }],
+//        售后管理
         shouhouManage: [{
           text: '申请换货',
           src: require('./shenqinghuanhuo@2x.png'),
@@ -185,6 +195,7 @@
           src: require('./shouhoujilu@2x.png'),
           to: '/home/contact-business'
         }],
+//        出货统计
         chuhuoCalculate: [{
           text: '我的介绍',
           src: require('./wodejieshao@2x.png'),
@@ -198,6 +209,7 @@
           src: require('./chajialirun@2x.png'),
           to: '/home/contact-business'
         }],
+//        产品查询
         chanpinchaxun: [{
           text: '产品查询',
           src: require('./chanpinchaxun@2x.png'),
@@ -405,7 +417,7 @@
         border-right:1px solid $color-border;
         display: inline-block;
         img {
-          margin-bottom: 0.24rem;
+          margin-bottom: 0.22rem;
           width: 0.46rem;
           height: 0.46rem;
         }
